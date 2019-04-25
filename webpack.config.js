@@ -19,6 +19,25 @@ module.exports = {
         ],
         use: 'babel-loader',
       },
+      {
+      	test: /\.css/,
+      	include: [
+      		path.resolve(__dirname, 'src')
+      	],
+      	use: [
+      		'style-loader',
+      		'css-loader'
+      	]
+      },
+      {
+      	test: /\.(png|jpg|jpeg|gif)$/,
+      	use: [
+      		{
+      			loader: 'file-loader',
+      			options: {}
+      		}
+      	]
+      }
     ],
   },
 
@@ -42,4 +61,8 @@ module.exports = {
     	template: 'src/assets/index.html'
     })
   ],
+
+  devServer: {
+  	port: 9000
+  }
 }
