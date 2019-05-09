@@ -8,3 +8,9 @@
 .img-show{
 	display: block;
 }
+.test-bk{
+	width: 604px;
+	height: 452px;
+	background-image: url(../../img/spring_redpack.png);
+	background-repeat: no-repeat;
+}
