@@ -47,21 +47,25 @@ module.exports = {
       	use: [
       		{
       			loader: 'file-loader',
-      			options: {}
+      			options: {
+      				name: '[name].[hash:5].[ext]',
+      				publicPath: '../images', //这个是用来设置打包后图片路径的路径起始部分
+      				outputPath: 'images' //把图片打包到dist下的images下
+      			}
       		}
       	]
       },
-      //处理图片打包路径等问题（没这个图片默认不打包,主要用于css里面的引入的背景图片）
-      {
-      	test: /\.(png|jpg|jpeg|gif)$/,
-      	use: [
-      		{
-      			//loader 后面 limit 字段代表图片打包限制，这个限制并不是说超过了就不能打包，而是指当图片大小小于限制时会自动转成 base64 码引用。上例中大于8192字节的图片正常打包，小于8192字节的图片以 base64 的方式引用
-      			//name 字段指定了在打包根目录（output.path）下生成名为 images 的文件夹，并在原图片名前加上8位 hash 值
-      			loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
-      		}
-      	]
-      },
+      //处理图片打包路径等问题（没这个图片默认不打包,主要用于css里面的引入的背景图片）(注意：只用file-loader也可以解决)
+      // {
+      // 	test: /\.(png|jpg|jpeg|gif)$/,
+      // 	use: [
+      // 		{
+      // 			//loader 后面 limit 字段代表图片打包限制，这个限制并不是说超过了就不能打包，而是指当图片大小小于限制时会自动转成 base64 码引用。上例中大于8192字节的图片正常打包，小于8192字节的图片以 base64 的方式引用
+      // 			//name 字段指定了在打包根目录（output.path）下生成名为 images 的文件夹，并在原图片名前加上8位 hash 值
+      // 			loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
+      // 		}
+      // 	]
+      // },
       //处理html中img标签引入的图片
       {
       	test: /\.html$/,
