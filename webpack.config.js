@@ -55,7 +55,7 @@ module.exports = {
       		}
       	]
       },
-      //处理图片打包路径等问题（没这个图片默认不打包,主要用于css里面的引入的背景图片）(注意：只用file-loader也可以解决)
+      //处理图片打包路径等问题（没这个图片默认不打包,主要用于css里面的引入的背景图片）(注意：只用file-loader也可以解决,不用url-loader图片不能转base64)
       // {
       // 	test: /\.(png|jpg|jpeg|gif)$/,
       // 	use: [
